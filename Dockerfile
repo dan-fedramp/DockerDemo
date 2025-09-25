@@ -14,9 +14,11 @@ RUN useradd -m scriptrunner
 # Copy the scripts into the container
 COPY unsafe_script.py /app/
 COPY run_script.sh /app/
+COPY .env /app/
 
 # Set appropriate permissions
 RUN chmod +x /app/run_script.sh
+RUN chmod 400 /app/run_script
 
 # Switch to non-root user
 USER scriptrunner
